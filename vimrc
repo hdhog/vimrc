@@ -328,5 +328,5 @@ filetype plugin on
 filetype plugin indent on
 
 "--------------------
-Project  '~/development/gopath/src/gocdpwalker', 'gocdpwalker'
+"Project  '~/development/gopath/src/gocdpwalker', 'gocdpwalker'
 "--------------------
