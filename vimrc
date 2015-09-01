@@ -317,7 +317,11 @@ Plugin 'mitsuhiko/vim-jinja'		" Jinja support for vim
 Plugin 'mitsuhiko/vim-python-combined'  " Combined Python 2/3 for Vim
 Bundle 'fatih/vim-go'
 Bundle 'amiorin/vim-project'
+" -----------------------------
 Bundle 'Valloric/YouCompleteMe'
+"cd ~/.vim/bundle/YouCompleteMe
+"./install.py --clang-completer
+"------------------------------
 Plugin 'Shougo/neosnippet'
 Plugin 'Shougo/neosnippet-snippets'
 "---------------=== Theme ===-------------------------
