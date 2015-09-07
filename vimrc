@@ -72,6 +72,7 @@ if has('gui')
 	set guioptions-=e
 	set guioptions-=T
 	set guioptions-=m
+	set guioptions-=r 
  	colorscheme hybrid
 
 	if has('win32')
@@ -135,7 +136,8 @@ let g:airline#extensions#tabline#enabled = 1
 "let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_powerline_fonts = 1
 " ----------------
-
+"let g:ConqueTerm_ToggleKey = '<F8>'
+" ----------------
 let g:project_enable_welcome = 0
 let g:project_use_nerdtree = 1
 call project#rc("~/development")
