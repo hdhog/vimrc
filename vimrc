@@ -1,4 +1,52 @@
+
 set rtp+=~/.vim/bundle/vim-project/
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+"=====================================================
+" Vundle settings
+"=====================================================
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'		" let Vundle manage Vundle, required
+" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+"
+"---------=== Code/project navigation ===-------------
+Plugin 'scrooloose/nerdtree' 	    	" Project and file navigation
+Plugin 'majutsushi/tagbar'          	" Class/module browser
+
+"------------------=== Other ===----------------------
+Plugin 'bling/vim-airline'   	    	" Lean & mean status/tabline for vim
+Plugin 'fisadev/FixedTaskList.vim'  	" Pending tasks list
+Plugin 'rosenfeld/conque-term'      	" Consoles as buffers
+Plugin 'tpope/vim-surround'	   	" Parentheses, brackets, quotes, XML tags, and more
+Plugin 'scrooloose/nerdcommenter'	" Nerd comment
+"--------------=== Snippets support ===---------------
+Plugin 'garbas/vim-snipmate'		" Snippets manager
+Plugin 'MarcWeber/vim-addon-mw-utils'	" dependencies #1
+Plugin 'tomtom/tlib_vim'		" dependencies #2
+Plugin 'honza/vim-snippets'		" snippets repo
+
+"---------------=== Languages support ===-------------
+" --- Python ---
+Plugin 'klen/python-mode'	        " Python mode (docs, refactor, lints, highlighting, run and ipdb and more)
+Plugin 'davidhalter/jedi-vim' 		" Jedi-vim autocomplete plugin
+Plugin 'mitsuhiko/vim-jinja'		" Jinja support for vim
+Plugin 'mitsuhiko/vim-python-combined'  " Combined Python 2/3 for Vim
+Bundle 'fatih/vim-go'
+Bundle 'amiorin/vim-project'
+" -----------------------------
+Bundle 'Valloric/YouCompleteMe'
+"cd ~/.vim/bundle/YouCompleteMe
+"./install.py --clang-completer
+"------------------------------
+"Plugin 'Shougo/neosnippet'
+"Plugin 'Shougo/neosnippet-snippets'
+"---------------=== Theme ===-------------------------
+Plugin 'w0ng/vim-hybrid'
+call vundle#end()            		" required
 colorscheme hybrid  " Цветовая тема
 set numberwidth=1              " Keep line numbers small if it's shown
 syntax on 		" Подсветка синтаксиса
@@ -72,7 +120,7 @@ if has('gui')
 	set guioptions-=e
 	set guioptions-=T
 	set guioptions-=m
-	set guioptions-=r 
+	set guioptions-=r
  	colorscheme hybrid
 
 	if has('win32')
@@ -280,58 +328,6 @@ function! RemoveTrailingSpaces()
    execute '%s:\s\+$::ge'
    normal! 'yzt`z
 endfunction
-
-
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-"=====================================================
-" Vundle settings
-"=====================================================
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'gmarik/Vundle.vim'		" let Vundle manage Vundle, required
-" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-"
-"---------=== Code/project navigation ===-------------
-Plugin 'scrooloose/nerdtree' 	    	" Project and file navigation
-Plugin 'majutsushi/tagbar'          	" Class/module browser
-
-"------------------=== Other ===----------------------
-Plugin 'bling/vim-airline'   	    	" Lean & mean status/tabline for vim
-Plugin 'fisadev/FixedTaskList.vim'  	" Pending tasks list
-Plugin 'rosenfeld/conque-term'      	" Consoles as buffers
-Plugin 'tpope/vim-surround'	   	" Parentheses, brackets, quotes, XML tags, and more
-Plugin 'scrooloose/nerdcommenter'	" Nerd comment
-"--------------=== Snippets support ===---------------
-Plugin 'garbas/vim-snipmate'		" Snippets manager
-Plugin 'MarcWeber/vim-addon-mw-utils'	" dependencies #1
-Plugin 'tomtom/tlib_vim'		" dependencies #2
-Plugin 'honza/vim-snippets'		" snippets repo
-
-"---------------=== Languages support ===-------------
-" --- Python ---
-Plugin 'klen/python-mode'	        " Python mode (docs, refactor, lints, highlighting, run and ipdb and more)
-Plugin 'davidhalter/jedi-vim' 		" Jedi-vim autocomplete plugin
-Plugin 'mitsuhiko/vim-jinja'		" Jinja support for vim
-Plugin 'mitsuhiko/vim-python-combined'  " Combined Python 2/3 for Vim
-Bundle 'fatih/vim-go'
-Bundle 'amiorin/vim-project'
-" -----------------------------
-Bundle 'Valloric/YouCompleteMe'
-"cd ~/.vim/bundle/YouCompleteMe
-"./install.py --clang-completer
-"------------------------------
-Plugin 'Shougo/neosnippet'
-Plugin 'Shougo/neosnippet-snippets'
-"---------------=== Theme ===-------------------------
-Plugin 'w0ng/vim-hybrid'
-call vundle#end()            		" required
-filetype on
-filetype plugin on
-filetype plugin indent on
 
 "--------------------
 "Project  '~/development/gopath/src/gocdpwalker', 'gocdpwalker'
