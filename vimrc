@@ -1,52 +1,40 @@
-
-set rtp+=~/.vim/bundle/vim-project/
+if empty(glob("~/.vim/autoload/plug.vim"))
+    execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+endif
+"---------------------------------------------------------------
 set nocompatible              " be iMproved, required
-filetype off                  " required
-
-"=====================================================
-" Vundle settings
-"=====================================================
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'gmarik/Vundle.vim'		" let Vundle manage Vundle, required
-" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-"
+call plug#begin('~/.vim/plugged')
 "---------=== Code/project navigation ===-------------
-Plugin 'scrooloose/nerdtree' 	    	" Project and file navigation
-Plugin 'majutsushi/tagbar'          	" Class/module browser
+Plug 'scrooloose/nerdtree' 	    	" Project and file navigation
+Plug 'majutsushi/tagbar'          	" Class/module browser
 
 "------------------=== Other ===----------------------
-Plugin 'bling/vim-airline'   	    	" Lean & mean status/tabline for vim
-Plugin 'fisadev/FixedTaskList.vim'  	" Pending tasks list
-Plugin 'rosenfeld/conque-term'      	" Consoles as buffers
-Plugin 'tpope/vim-surround'	   	" Parentheses, brackets, quotes, XML tags, and more
-Plugin 'scrooloose/nerdcommenter'	" Nerd comment
+Plug 'bling/vim-airline'   	    	" Lean & mean status/tabline for vim
+Plug 'fisadev/FixedTaskList.vim'  	" Pending tasks list
+Plug 'rosenfeld/conque-term'      	" Consoles as buffers
+Plug 'tpope/vim-surround'	   	" Parentheses, brackets, quotes, XML tags, and more
+Plug 'scrooloose/nerdcommenter'	" Nerd comment
 "--------------=== Snippets support ===---------------
-Plugin 'garbas/vim-snipmate'		" Snippets manager
-Plugin 'MarcWeber/vim-addon-mw-utils'	" dependencies #1
-Plugin 'tomtom/tlib_vim'		" dependencies #2
-Plugin 'honza/vim-snippets'		" snippets repo
+Plug 'garbas/vim-snipmate'		" Snippets manager
+Plug 'MarcWeber/vim-addon-mw-utils'	" dependencies #1
+Plug 'tomtom/tlib_vim'		" dependencies #2
+Plug 'honza/vim-snippets'		" snippets repo
 
 "---------------=== Languages support ===-------------
 " --- Python ---
-Plugin 'klen/python-mode'	        " Python mode (docs, refactor, lints, highlighting, run and ipdb and more)
-Plugin 'davidhalter/jedi-vim' 		" Jedi-vim autocomplete plugin
-Plugin 'mitsuhiko/vim-jinja'		" Jinja support for vim
-Plugin 'mitsuhiko/vim-python-combined'  " Combined Python 2/3 for Vim
-Bundle 'fatih/vim-go'
-Bundle 'amiorin/vim-project'
+Plug 'klen/python-mode'	        " Python mode (docs, refactor, lints, highlighting, run and ipdb and more)
+Plug 'davidhalter/jedi-vim' 		" Jedi-vim autocomplete Plug
+Plug 'mitsuhiko/vim-jinja'		" Jinja support for vim
+Plug 'mitsuhiko/vim-python-combined'  " Combined Python 2/3 for Vim
+Plug 'fatih/vim-go'
+Plug 'amiorin/vim-project'
 " -----------------------------
-Bundle 'Valloric/YouCompleteMe'
-"cd ~/.vim/bundle/YouCompleteMe
+Plug 'Valloric/YouCompleteMe'
+"cd ~/.vim/Plug/YouCompleteMe
 "./install.py --clang-completer
-"------------------------------
-"Plugin 'Shougo/neosnippet'
-"Plugin 'Shougo/neosnippet-snippets'
 "---------------=== Theme ===-------------------------
-Plugin 'w0ng/vim-hybrid'
-call vundle#end()            		" required
+Plug 'w0ng/vim-hybrid'
+call plug#end()
 colorscheme hybrid  " Цветовая тема
 set numberwidth=1              " Keep line numbers small if it's shown
 syntax on 		" Подсветка синтаксиса
@@ -235,8 +223,8 @@ imap <F3> :NERDTreeToggle<CR>
 vmap <F3> :NERDTreeToggle<CR>
 " Кооментирование кода
 nmap <C-\> \c<Space>
-imap <C-\> \c<Space>
-vmap <C-\> \c<Space>
+imap <C-\> <Esc>\c<Space>
+vmap <C-\> <Esc>\c<Space>
 
 "Переключение табов
 "@map <S-Tab> gt
