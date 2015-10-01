@@ -36,6 +36,7 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'w0ng/vim-hybrid'
 call plug#end()
 colorscheme hybrid  " Цветовая тема
+set background=dark
 set numberwidth=1              " Keep line numbers small if it's shown
 syntax on 		" Подсветка синтаксиса
 filetype on 		" Настройки для типов файлов
@@ -51,7 +52,6 @@ set autoread 		" перечитывать изменённые файлы авт
 set backspace=indent,eol,start whichwrap+=<,>,[,] "Удобное поведение backspace
 set ch=1                " Сделать строку команд высотой в одну строку
 set completeopt=menu 	" только доступные варианты автодополнени 		" не использовать свап файл для сброса буферовя
-"set confirm 		" использовать диалоги вместо сообщений об ошибках
 set foldcolumn=3 	" Колоночка, чтобы показывать плюсики для скрытия блоков кода:
 set foldenable 		" Включить сворачивание блоков кода
 set foldlevelstart=100  " Первые 100 блоков будет развернуты остальные свернуты
@@ -88,9 +88,6 @@ set statusline=%<%f%h%m%r%=format=%{&fileformat}\ file=%{&fileencoding}\ enc=%{&
 set ttyfast
 set undolevels=2048 " хранить историю изменений числом N
 set wildmode=longest,list,full
-"" Подсвечивать табы и пробелы в конце строки
-"set list " включить подсветку
-"set listchars=tab:>-,trail:- " установить символы, которыми будет осуществляться подсветка
 set wildmenu
 "Проблема красного на красном при spellchecking-е решается такой строкой в .vimrc
 highlight SpellBad ctermfg=Black ctermbg=Red
@@ -123,16 +120,8 @@ autocmd! bufwritepost $MYVIMRC source $MYVIMRC
 hi StatusLine gui=reverse cterm=reverse
 let c_syntax_for_h="" 			" присваивался тип c, а не cpp.
 
-"let python_highlight_all = 1 		"Подсвечиваем все что можно подсвечивать
-
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-" Enable python folding
-"let g:pymode_folding = 1
-
 set iskeyword+=.
-
-"let $PYTHONPATH .= ":/usr/lib64/python2.7/site-packages/rope/"
-"let ropevim_vim_completion=1
 
 "ВКЛЮЧЕНИЕ АВТОДОПЛНЕНИЯ ВВОДА (omnifunct)
 au! FileType python set omnifunc=pythoncomplete#Complete
@@ -211,8 +200,8 @@ imap <F5> <Esc>:qa!<CR>
 vmap <F5> <Esc>:qa!<CR>
 
 " Открытие\закрытие новой вкладки
-"imap <C-t>t <Esc>:tabnew<CR>a
-"nmap <C-t>t :tabnew<CR>
+imap <C-t>t <Esc>:tabnew<CR>a
+nmap <C-t>t :tabnew<CR>
 
 " Запуск/сокрытие плагина Tag List
 map <F2> :TagbarToggle<CR>
@@ -316,7 +305,3 @@ function! RemoveTrailingSpaces()
    execute '%s:\s\+$::ge'
    normal! 'yzt`z
 endfunction
-
-"--------------------
-"Project  '~/development/gopath/src/gocdpwalker', 'gocdpwalker'
-"--------------------
