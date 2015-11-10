@@ -30,6 +30,8 @@ Plug 'fatih/vim-go'
 Plug 'amiorin/vim-project'
 " -----------------------------
 Plug 'Valloric/YouCompleteMe'
+" -- yaml
+Plug 'chase/vim-ansible-yaml'
 "cd ~/.vim/Plug/YouCompleteMe
 "./install.py --clang-completer
 "---------------=== Theme ===-------------------------
