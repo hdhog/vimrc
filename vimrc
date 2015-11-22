@@ -121,7 +121,7 @@ endif
 autocmd! bufwritepost $MYVIMRC source $MYVIMRC
 hi StatusLine gui=reverse cterm=reverse
 let c_syntax_for_h="" 			" присваивался тип c, а не cpp.
-
+let g:pymode_rope_complete_on_dot = 0
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 set iskeyword+=.
 
