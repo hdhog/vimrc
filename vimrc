@@ -243,6 +243,9 @@ au FileType python set sw=4
 au FileType python set ts=4
 au FileType python set sts=4
 "-------------------- vim go ----------------------
+au FileType go set sw=4
+au FileType go set ts=4
+au FileType go set sts=4
 au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>t <Plug>(go-test)
