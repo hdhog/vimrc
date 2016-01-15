@@ -34,6 +34,7 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'chase/vim-ansible-yaml'
 " -- Python
 Plug 'SirVer/ultisnips'
+Plug 'Valloric/MatchTagAlways'
 "---------------=== Theme ===-------------------------
 Plug 'w0ng/vim-hybrid'
 call plug#end()
@@ -133,7 +134,12 @@ au! FileType css set omnifunc=csscomplete#CompleteCSS
 au! FileType xml set omnifunc=xmlcomplete#CompleteTags
 au! FileType php set omnifunc=phpcomplete#CompletePHP
 au! FileType c set omnifunc=ccomplete#Complete
-
+let g:mta_filetypes = {
+    \ 'html' : 1,
+    \ 'xhtml' : 1,
+    \ 'xml' : 1,
+    \ 'tmpl' : 1,
+    \}
 " Некоторые настройки для плагина TagList
 
 let Tlist_Show_One_File 		= 1 " показывать информацию только по одному файлу
@@ -213,9 +219,9 @@ map <F3> :NERDTreeToggle<CR>
 imap <F3> :NERDTreeToggle<CR>
 vmap <F3> :NERDTreeToggle<CR>
 " Кооментирование кода
-nmap <C-\> \c<Space>
-imap <C-\> <Esc>\c<Space>
-vmap <C-\> <Esc>\c<Space>
+nmap <C-\> <leader>c<space>
+imap <C-\> <Esc><leader>c<space>
+vmap <C-\> <Esc><leader>c<space>
 
 "Переключение табов
 "@map <S-Tab> gt
@@ -227,6 +233,10 @@ vmap <C-\> <Esc>\c<Space>
 "inoremap <C-S-tab> <Esc>:tabprevious<CR>i
 "inoremap <C-tab>   <Esc>:tabnext<CR>i
 "inoremap <C-t>     <Esc>:tabnew<CR>
+"-------------------- NerdTree --------------------
+let g:NERDTreeDirArrows = 1
+let g:NERDTreeDirArrowExpandable = '>'
+let g:NERDTreeDirArrowCollapsible = '_'
 "-------------------- ultisnip --------------------
 let g:UltiSnipsExpandTrigger       = "<c-j>"
 let g:UltiSnipsJumpForwardTrigger  = "<c-j>"
@@ -254,6 +264,10 @@ au FileType go nmap <leader>c <Plug>(go-coverage)
 au FileType go nmap <Leader>ds <Plug>(go-def-split)
 au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
 au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+
+au FileType html set sw=4
+au FileType html set ts=4
+au FileType html set sts=4
 
 "--------------------------------------------------
 autocmd BufEnter *.* :call RemoveTrailingSpaces()
