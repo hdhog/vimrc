@@ -219,9 +219,9 @@ map <F3> :NERDTreeToggle<CR>
 imap <F3> :NERDTreeToggle<CR>
 vmap <F3> :NERDTreeToggle<CR>
 " Кооментирование кода
-nmap <C-\> <leader>c<space>
-imap <C-\> <Esc><leader>c<space>
-vmap <C-\> <Esc><leader>c<space>
+nmap <C-_> <leader>c<space>
+imap <C-_> <leader>c<space>
+vmap <C-_> <leader>c<space>
 
 "Переключение табов
 "@map <S-Tab> gt
