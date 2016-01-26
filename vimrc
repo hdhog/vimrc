@@ -87,7 +87,6 @@ set whichwrap=b,<,>,[,],l,h " перемещать курсор на следу�
 set t_Co=256 		" использовать больше цветов в терминале
 set matchpairs+=<:> 	" показывать совпадающие скобки для HTML-тегов
 set statusline=%<%f%h%m%r%=format=%{&fileformat}\ file=%{&fileencoding}\ enc=%{&encoding}\ %b\ 0x%B\ %l,%c%V\ %P
-"set tabline=%!MyTabLine()
 set ttyfast
 set undolevels=2048 " хранить историю изменений числом N
 set wildmode=longest,list,full
@@ -109,12 +108,13 @@ if has('gui')
 	set guioptions-=T
 	set guioptions-=m
 	set guioptions-=r
+	set guioptions-=L
  	colorscheme hybrid
 
 	if has('win32')
         	set guifont=Lucida_Console:h10:cRUSSIAN::
 	else
-        	set guifont=Terminus\ 10
+        	set guifont=Hack
 	endif
 endif
 
@@ -165,8 +165,8 @@ let g:enable_bold_font = 1
 let g:Powerline_symbols = 'fancy'
 let g:airline_theme = 'hybrid'
 let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#tabline#left_sep = ' '
-"let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_powerline_fonts = 1
 " ----------------
 "let g:ConqueTerm_ToggleKey = '<F8>'
@@ -219,9 +219,9 @@ map <F3> :NERDTreeToggle<CR>
 imap <F3> :NERDTreeToggle<CR>
 vmap <F3> :NERDTreeToggle<CR>
 " Кооментирование кода
-nmap <C-_> <leader>c<space>
-imap <C-_> <leader>c<space>
-vmap <C-_> <leader>c<space>
+nmap <C-_> \c<space>
+imap <C-_> \c<space>
+vmap <C-_> \c<space>
 
 "Переключение табов
 "@map <S-Tab> gt
