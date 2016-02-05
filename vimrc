@@ -9,7 +9,8 @@ Plug 'scrooloose/nerdtree' 	    	" Project and file navigation
 Plug 'majutsushi/tagbar'          	" Class/module browser
 
 "------------------=== Other ===----------------------
-Plug 'bling/vim-airline'   	    	" Lean & mean status/tabline for vim
+Plug 'vim-airline/vim-airline'   	    	" Lean & mean status/tabline for vim
+Plug 'vim-airline/vim-airline-themes'
 Plug 'fisadev/FixedTaskList.vim'  	" Pending tasks list
 Plug 'rosenfeld/conque-term'      	" Consoles as buffers
 Plug 'tpope/vim-surround'	   	" Parentheses, brackets, quotes, XML tags, and more
