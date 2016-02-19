@@ -42,6 +42,7 @@ Plug 'sjl/gundo.vim'
 Plug 'tpope/vim-surround'
 "Plug 'FooSoft/vim-argwrap'
 Plug 'ryanoasis/vim-devicons'
+Plug 'kien/ctrlp.vim'
 call plug#end()
 colorscheme hybrid  " Цветовая тема
 set background=dark
