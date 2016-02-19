@@ -38,6 +38,10 @@ Plug 'SirVer/ultisnips'
 Plug 'Valloric/MatchTagAlways'
 "---------------=== Theme ===-------------------------
 Plug 'w0ng/vim-hybrid'
+Plug 'sjl/gundo.vim'
+Plug 'tpope/vim-surround'
+"Plug 'FooSoft/vim-argwrap'
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
 colorscheme hybrid  " Цветовая тема
 set background=dark
