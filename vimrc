@@ -28,6 +28,7 @@ Plug 'davidhalter/jedi-vim' 		" Jedi-vim autocomplete Plug
 Plug 'mitsuhiko/vim-jinja'		" Jinja support for vim
 Plug 'mitsuhiko/vim-python-combined'  " Combined Python 2/3 for Vim
 Plug 'fatih/vim-go'
+Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 Plug 'amiorin/vim-project'
 " -----------------------------
 Plug 'Valloric/YouCompleteMe'
