@@ -44,7 +44,7 @@ Plug 'tpope/vim-surround'
 "Plug 'FooSoft/vim-argwrap'
 Plug 'ryanoasis/vim-devicons'
 Plug 'kien/ctrlp.vim'
-Plug 'tpope/vim-fugitive'
+"Plug 'tpope/vim-fugitive'
 call plug#end()
 colorscheme hybrid  " Цветовая тема
 set background=dark
@@ -181,6 +181,10 @@ let g:airline_powerline_fonts = 1
 " ----------------
 let g:project_enable_welcome = 0
 let g:project_use_nerdtree = 1
+
+" ------------- vim-go --------
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 call project#rc("~/development")
 " Более привычные Page Up/Down, когда курсор остаётся в той же строке,
 " а не переносится вверх/вниз экрана, как при стандартном PgUp/PgDown.
@@ -253,9 +257,10 @@ let g:UltiSnipsListSnippets        = "<c-k>" "List possible snippets based on cu
 "-------------------- YCM -------------------------
 let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
 let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
-let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
+"let g:ycm_seed_identifiers_with_syntax = 0 " Completion for programming language's keyword
 let g:ycm_complete_in_comments = 1 " Completion in comments
 let g:ycm_complete_in_strings = 1 " Completion in string
+let g:ycm_seed_identifiers_with_syntax=1
 "-------------------- vim py ----------------------
 au FileType python set sw=4
 au FileType python set ts=4
