@@ -27,25 +27,23 @@ Plug 'klen/python-mode'	        " Python mode (docs, refactor, lints, highlighti
 Plug 'davidhalter/jedi-vim' 		" Jedi-vim autocomplete Plug
 Plug 'mitsuhiko/vim-jinja'		" Jinja support for vim
 Plug 'mitsuhiko/vim-python-combined'  " Combined Python 2/3 for Vim
-Plug 'fatih/vim-go'
-Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
-Plug 'amiorin/vim-project'
 " -----------------------------
 Plug 'Valloric/YouCompleteMe'
 " -- yaml
 Plug 'chase/vim-ansible-yaml'
-" -- Python
+" -- Go
+Plug 'fatih/vim-go'
+Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
+Plug 'garyburd/go-explorer'
+
 Plug 'SirVer/ultisnips'
 Plug 'Valloric/MatchTagAlways'
 "---------------=== Theme ===-------------------------
 Plug 'w0ng/vim-hybrid'
 Plug 'sjl/gundo.vim'
-Plug 'tpope/vim-surround'
-"Plug 'FooSoft/vim-argwrap'
-Plug 'ryanoasis/vim-devicons'
 Plug 'kien/ctrlp.vim'
-"Plug 'tpope/vim-fugitive'
 call plug#end()
+
 colorscheme hybrid  " Цветовая тема
 set background=dark
 set numberwidth=1              " Keep line numbers small if it's shown
@@ -120,12 +118,11 @@ if has('gui')
  	colorscheme hybrid
 
 	if has('win32')
-        	set guifont=Lucida_Console:h10:cRUSSIAN::
+		set guifont=Lucida_Console:h10:cRUSSIAN::
 	else
-        	set guifont=Hack
+		set guifont=Droid_Sans_Mono_for_Powerline
 	endif
 endif
-
 "" Автоматически перечитывать конфигурацию VIM после сохранения
 autocmd! bufwritepost $MYVIMRC source $MYVIMRC
 hi StatusLine gui=reverse cterm=reverse
@@ -134,14 +131,6 @@ let g:pymode_rope_complete_on_dot = 0
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 set iskeyword+=.
 
-"ВКЛЮЧЕНИЕ АВТОДОПЛНЕНИЯ ВВОДА (omnifunct)
-au! FileType python set omnifunc=pythoncomplete#Complete
-au! FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-au! FileType html set omnifunc=htmlcomplete#CompleteTags
-au! FileType css set omnifunc=csscomplete#CompleteCSS
-au! FileType xml set omnifunc=xmlcomplete#CompleteTags
-au! FileType php set omnifunc=phpcomplete#CompletePHP
-au! FileType c set omnifunc=ccomplete#Complete
 let g:mta_filetypes = {
     \ 'html' : 1,
     \ 'xhtml' : 1,
@@ -150,42 +139,46 @@ let g:mta_filetypes = {
     \}
 " Некоторые настройки для плагина TagList
 
-let Tlist_Show_One_File 		= 1 " показывать информацию только по одному файлу
-let Tlist_GainFocus_On_ToggleOpen 	= 1 " получать фокус при открытии
-let Tlist_Compact_Format 		= 1
-let Tlist_Close_On_Select 		= 0 " не закрывать окно  после выбора тега
-let Tlist_Auto_Highlight_Tag 		= 1 " подсвечивать тег, на  котором сейчас находимся
-let Tlist_Compact_Format 		= 1
-let Tlist_Enable_Fold_Column 		= 0
-let Tlist_Exit_OnlyWindow 		= 0
-let Tlist_WinWidth 			= 25
-let Tlist_Use_Right_Window 		= 0
-let Tlist_GainFocus_On_ToggleOpen 	= 1
-let Tlist_Display_Tag_Scope 		= 1
-let Tlist_Process_File_Always 		= 1
 
-let g:tagbar_left = 1
+" ----- TagBar 
+let g:tagbar_left = 0
 let g:tagbar_autofocus = 1
 let g:tagbar_sort = 0 "tagbar shows tags in order of they created in file
-let g:tagbar_foldlevel = 0 "close tagbar folds by default
-" Airline
+let g:tagbar_foldlevel = 1 "close tagbar folds by default
+let g:tagbar_width = 30
+let g:tagbar_compact = 1
+let g:tagbar_iconchars = ['▸', '▾']
+
+"-------------------- NerdTree --------------------
+let g:NERDTreeDirArrows = 1
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+"-------------------- ultisnip --------------------
+let g:UltiSnipsExpandTrigger       = "<c-j>"
+let g:UltiSnipsJumpForwardTrigger  = "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-p>"
+let g:UltiSnipsListSnippets        = "<c-k>" "List possible snippets based on current file
+"-------------------- YCM -------------------------
+let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
+let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
+let g:ycm_complete_in_comments = 1 " Completion in comments
+let g:ycm_complete_in_strings = 1 " Completion in string
+let g:ycm_seed_identifiers_with_syntax=1
+" ----- Airline
 let g:enable_bold_font = 1
-let g:Powerline_symbols = 'fancy'
 let g:airline_theme = 'hybrid'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_powerline_fonts = 1
-" ----------------
-"let g:ConqueTerm_ToggleKey = '<F8>'
-" ----------------
-let g:project_enable_welcome = 0
-let g:project_use_nerdtree = 1
-
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_symbols.space = "\ua0"
 " ------------- vim-go --------
 let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
-call project#rc("~/development")
+" -------------- map ----------
 " Более привычные Page Up/Down, когда курсор остаётся в той же строке,
 " а не переносится вверх/вниз экрана, как при стандартном PgUp/PgDown.
 " Поскольку по умолчанию прокрутка по C-U/D происходит на полэкрана,
@@ -230,37 +223,18 @@ vmap <F2> <Esc>:TagbarToggle<CR>
 map <F3> :NERDTreeToggle<CR>
 imap <F3> :NERDTreeToggle<CR>
 vmap <F3> :NERDTreeToggle<CR>
-" Кооментирование кода
-nmap <C-_> \c<space>
-imap <C-_> \c<space>
-vmap <C-_> \c<space>
 
-"Переключение табов
-"@map <S-Tab> gt
-"imap <S-Tab> <Esc> gt
-" tab navigation like firefox
-"nnoremap <C-S-tab> :tabprevious<CR>
-"nnoremap <C-tab>   :tabnext<CR>
-"nnoremap <C-t>     :tabnew<CR>
-"inoremap <C-S-tab> <Esc>:tabprevious<CR>i
-"inoremap <C-tab>   <Esc>:tabnext<CR>i
-"inoremap <C-t>     <Esc>:tabnew<CR>
-"-------------------- NerdTree --------------------
-let g:NERDTreeDirArrows = 1
-let g:NERDTreeDirArrowExpandable = '>'
-let g:NERDTreeDirArrowCollapsible = '_'
-"-------------------- ultisnip --------------------
-let g:UltiSnipsExpandTrigger       = "<c-j>"
-let g:UltiSnipsJumpForwardTrigger  = "<c-j>"
-let g:UltiSnipsJumpBackwardTrigger = "<c-p>"
-let g:UltiSnipsListSnippets        = "<c-k>" "List possible snippets based on current file
-"-------------------- YCM -------------------------
-let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
-let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
-"let g:ycm_seed_identifiers_with_syntax = 0 " Completion for programming language's keyword
-let g:ycm_complete_in_comments = 1 " Completion in comments
-let g:ycm_complete_in_strings = 1 " Completion in string
-let g:ycm_seed_identifiers_with_syntax=1
+" Кооментирование кода
+if has('macunix')
+	nmap <D-/> \c<space>
+	imap <D-/> \c<space>
+	vmap <D-/> \c<space>
+else
+	nmap <C-_> \c<space>
+	imap <C-_> \c<space>
+	vmap <C-_> \c<space>
+endif
+
 "-------------------- vim py ----------------------
 au FileType python set sw=4
 au FileType python set ts=4
@@ -282,12 +256,3 @@ au FileType html set sw=4
 au FileType html set ts=4
 au FileType html set sts=4
 
-"--------------------------------------------------
-autocmd BufEnter *.* :call RemoveTrailingSpaces()
-autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
-"" Удалить пробелы в конце строк (frantsev)
-function! RemoveTrailingSpaces()
-   normal! mzHmy
-   execute '%s:\s\+$::ge'
-   normal! 'yzt`z
-endfunction
