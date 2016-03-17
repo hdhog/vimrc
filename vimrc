@@ -37,6 +37,7 @@ Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' 
 Plug 'garyburd/go-explorer'
 
 Plug 'SirVer/ultisnips'
+Plug 'ervandew/supertab'
 Plug 'Valloric/MatchTagAlways'
 "---------------=== Theme ===-------------------------
 Plug 'w0ng/vim-hybrid'
@@ -148,7 +149,6 @@ let g:tagbar_foldlevel = 1 "close tagbar folds by default
 let g:tagbar_width = 30
 let g:tagbar_compact = 1
 let g:tagbar_iconchars = ['▸', '▾']
-
 "-------------------- NerdTree --------------------
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeDirArrowExpandable = '▸'
@@ -159,6 +159,10 @@ let g:UltiSnipsJumpForwardTrigger  = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-p>"
 let g:UltiSnipsListSnippets        = "<c-k>" "List possible snippets based on current file
 "-------------------- YCM -------------------------
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
 let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
 let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
 let g:ycm_complete_in_comments = 1 " Completion in comments
@@ -176,6 +180,12 @@ if !exists('g:airline_symbols')
 endif
 let g:airline_symbols.space = "\ua0"
 " ------------- vim-go --------
+let g:go_disable_autoinstall = 0
+let g:go_highlight_functions = 1  
+let g:go_highlight_methods = 1  
+let g:go_highlight_structs = 1  
+let g:go_highlight_operators = 1  
+let g:go_highlight_build_constraints = 1  
 let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 " -------------- map ----------
