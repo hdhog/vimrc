@@ -42,7 +42,7 @@ Plug 'Valloric/MatchTagAlways'
 "---------------=== Theme ===-------------------------
 Plug 'w0ng/vim-hybrid'
 Plug 'sjl/gundo.vim'
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 
 colorscheme hybrid  " Цветовая тема
