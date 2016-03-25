@@ -1,5 +1,8 @@
 if empty(glob("~/.vim/autoload/plug.vim"))
-    execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+    "execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+      autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 "---------------------------------------------------------------
 set nocompatible              " be iMproved, required
@@ -104,8 +107,6 @@ set completeopt-=preview
 set completeopt+=longest
 set mps-=[:]
 
-" Для указанных типов файлов отключает замену табов пробелами и меняет ширину отступа
-au FileType crontab,fstab,make set noexpandtab tabstop=8 shiftwidth=8
 
 "НАСТРОЙКИ ВНЕШНЕГО ВИДА
 " Установка шрифта (для Windows и Linux)
@@ -201,9 +202,6 @@ imap <PageDown> <C-O><C-D><C-O><C-D>
 " Вставка по shift insert
 map <S-Insert> <MiddleMouse>
 
-" C(trl)+d - дублирование текущей строки
-imap <C-d> <esc>yypi
-
 " C-c and C-v - Copy/Paste в глобальный клипборд
 vmap <C-C> "+yi
 imap <C-V> <esc>"+gPi
@@ -212,10 +210,6 @@ imap <C-V> <esc>"+gPi
 nmap <F4> :w!<CR>
 imap <F4> <Esc>:w!<CR>
 vmap <F4> <Esc>:w!<CR>
-
-" C-y - удаление текущей строки
-nmap <C-y> dd
-imap <C-y> <esc>ddi
 
 " Закрыть VIM
 nmap <F5> :qa!<CR>
@@ -230,6 +224,7 @@ nmap <C-t>t :tabnew<CR>
 map <F2> :TagbarToggle<CR>
 imap <F2> <Esc>:TagbarToggle<CR>
 vmap <F2> <Esc>:TagbarToggle<CR>
+" NerdTree
 map <F3> :NERDTreeToggle<CR>
 imap <F3> :NERDTreeToggle<CR>
 vmap <F3> :NERDTreeToggle<CR>
@@ -266,3 +261,5 @@ au FileType html set sw=4
 au FileType html set ts=4
 au FileType html set sts=4
 
+" Для указанных типов файлов отключает замену табов пробелами и меняет ширину отступа
+au FileType crontab,fstab,make set noexpandtab tabstop=8 shiftwidth=8
