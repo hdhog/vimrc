@@ -173,6 +173,7 @@ let g:ycm_seed_identifiers_with_syntax=1
 let g:enable_bold_font = 1
 let g:airline_theme = 'hybrid'
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_powerline_fonts = 1
@@ -239,7 +240,22 @@ else
 	imap <C-_> \c<space>
 	vmap <C-_> \c<space>
 endif
+"-------------------- switch tab ------------------
+" Go to tab by number
 
+if has('macunix')
+	noremap <D-1> 1gt
+	noremap <D-2> 2gt
+	noremap <D-3> 3gt
+	noremap <D-4> 4gt
+	noremap <D-5> 5gt
+	noremap <D-6> 6gt
+	noremap <D-7> 7gt
+	noremap <D-8> 8gt
+	noremap <D-9> 9gt
+	noremap <D-0> :tablast<cr>
+else
+endif
 "-------------------- vim py ----------------------
 au FileType python set sw=4
 au FileType python set ts=4
