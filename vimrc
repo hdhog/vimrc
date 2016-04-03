@@ -7,6 +7,7 @@ endif
 "---------------------------------------------------------------
 set nocompatible              " be iMproved, required
 call plug#begin('~/.vim/plugged')
+Plug 'tpope/vim-fugitive'
 "---------=== Code/project navigation ===-------------
 Plug 'scrooloose/nerdtree' 	    	" Project and file navigation
 Plug 'majutsushi/tagbar'          	" Class/module browser
@@ -97,6 +98,8 @@ set whichwrap=b,<,>,[,],l,h " перемещать курсор на следу�
 set t_Co=256 		" использовать больше цветов в терминале
 set matchpairs+=<:> 	" показывать совпадающие скобки для HTML-тегов
 set statusline=%<%f%h%m%r%=format=%{&fileformat}\ file=%{&fileencoding}\ enc=%{&encoding}\ %b\ 0x%B\ %l,%c%V\ %P
+"set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+
 set ttyfast
 set undolevels=2048 " хранить историю изменений числом N
 set wildmode=longest,list,full
@@ -122,7 +125,7 @@ if has('gui')
 	if has('win32')
 		set guifont=Lucida_Console:h10:cRUSSIAN::
 	else
-		set guifont=Droid_Sans_Mono_for_Powerline
+		set guifont=Droid_Sans_Mono_for_Powerline:h11
 	endif
 endif
 "" Автоматически перечитывать конфигурацию VIM после сохранения
@@ -229,7 +232,11 @@ vmap <F2> <Esc>:TagbarToggle<CR>
 map <F3> :NERDTreeToggle<CR>
 imap <F3> :NERDTreeToggle<CR>
 vmap <F3> :NERDTreeToggle<CR>
-
+" Better split switching
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
 " Кооментирование кода
 if has('macunix')
 	nmap <D-/> \c<space>
