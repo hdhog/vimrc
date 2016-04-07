@@ -98,7 +98,6 @@ set whichwrap=b,<,>,[,],l,h " перемещать курсор на следу�
 set t_Co=256 		" использовать больше цветов в терминале
 set matchpairs+=<:> 	" показывать совпадающие скобки для HTML-тегов
 set statusline=%<%f%h%m%r%=format=%{&fileformat}\ file=%{&fileencoding}\ enc=%{&encoding}\ %b\ 0x%B\ %l,%c%V\ %P
-"set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 set ttyfast
 set undolevels=2048 " хранить историю изменений числом N
@@ -143,8 +142,9 @@ let g:mta_filetypes = {
     \ 'tmpl' : 1,
     \}
 " Некоторые настройки для плагина TagList
-
-
+" ------ vim-plug
+let g:plug_shallow = 1
+let g:plug_window = "topleft new"
 " ----- TagBar 
 let g:tagbar_left = 0
 let g:tagbar_autofocus = 1
@@ -153,25 +153,30 @@ let g:tagbar_foldlevel = 1 "close tagbar folds by default
 let g:tagbar_width = 30
 let g:tagbar_compact = 1
 let g:tagbar_iconchars = ['▸', '▾']
+
 "-------------------- NerdTree --------------------
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
+
 "-------------------- ultisnip --------------------
 let g:UltiSnipsExpandTrigger       = "<c-j>"
 let g:UltiSnipsJumpForwardTrigger  = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-p>"
 let g:UltiSnipsListSnippets        = "<c-k>" "List possible snippets based on current file
+
 "-------------------- YCM -------------------------
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
-
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_min_num_of_chars_for_completion = 1
 let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
 let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
 let g:ycm_complete_in_comments = 1 " Completion in comments
 let g:ycm_complete_in_strings = 1 " Completion in string
 let g:ycm_seed_identifiers_with_syntax=1
+
 " ----- Airline
 let g:enable_bold_font = 1
 let g:airline_theme = 'hybrid'
@@ -184,6 +189,7 @@ if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 let g:airline_symbols.space = "\ua0"
+
 " ------------- vim-go --------
 let g:go_disable_autoinstall = 0
 let g:go_highlight_functions = 1  
