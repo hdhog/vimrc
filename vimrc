@@ -124,7 +124,7 @@ if has('gui')
 	if has('win32')
 		set guifont=Lucida_Console:h10:cRUSSIAN::
 	else
-		set guifont=Droid_Sans_Mono_for_Powerline:h11
+		set guifont="Droid Sans Mono for Powerline":h11
 	endif
 endif
 "" Автоматически перечитывать конфигурацию VIM после сохранения
