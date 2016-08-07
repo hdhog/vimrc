@@ -32,7 +32,8 @@ Plug 'davidhalter/jedi-vim' 		" Jedi-vim autocomplete Plug
 Plug 'mitsuhiko/vim-jinja'		" Jinja support for vim
 Plug 'mitsuhiko/vim-python-combined'  " Combined Python 2/3 for Vim
 " -----------------------------
-Plug 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe'
+Plug 'Shougo/neocomplete.vim'
 " -- yaml
 Plug 'chase/vim-ansible-yaml'
 " -- Go
@@ -165,17 +166,10 @@ let g:UltiSnipsJumpForwardTrigger  = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-p>"
 let g:UltiSnipsListSnippets        = "<c-k>" "List possible snippets based on current file
 
-"-------------------- YCM -------------------------
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_min_num_of_chars_for_completion = 1
-let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
-let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
-let g:ycm_complete_in_comments = 1 " Completion in comments
-let g:ycm_complete_in_strings = 1 " Completion in string
-let g:ycm_seed_identifiers_with_syntax=1
+" ----- Neocomplate
+let g:acp_enableAtStartup = 0
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
 
 " ----- Airline
 let g:enable_bold_font = 1
@@ -197,6 +191,8 @@ let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1  
 let g:go_highlight_operators = 1  
 let g:go_highlight_build_constraints = 1  
+let g:go_fmt_command = "goimports"
+let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck', 'varcheck']
 let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 " -------------- map ----------
@@ -285,6 +281,7 @@ au FileType go nmap <leader>c <Plug>(go-coverage)
 au FileType go nmap <Leader>ds <Plug>(go-def-split)
 au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
 au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+au FileType go nmap <Leader>i <Plug>(go-info)
 
 au FileType html set sw=4
 au FileType html set ts=4
