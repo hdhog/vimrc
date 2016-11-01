@@ -24,6 +24,7 @@ Plug 'garbas/vim-snipmate'		" Snippets manager
 Plug 'MarcWeber/vim-addon-mw-utils'	" dependencies #1
 Plug 'tomtom/tlib_vim'		" dependencies #2
 Plug 'honza/vim-snippets'		" snippets repo
+Plug 'Konfekt/FastFold'
 
 "---------------=== Languages support ===-------------
 " --- Python ---
@@ -40,6 +41,8 @@ Plug 'chase/vim-ansible-yaml'
 Plug 'fatih/vim-go'
 Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 Plug 'garyburd/go-explorer'
+" -- PowerShell
+Plug 'PProvost/vim-ps1'
 
 Plug 'SirVer/ultisnips'
 Plug 'ervandew/supertab'
@@ -93,6 +96,7 @@ set showmatch 		" показывать первую парную скобку п
 set showtabline=1
 set smartindent 	" Умные отступы
 set smarttab
+set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 set splitbelow
 set title 		" показывать имя буфера в заголовке терминала
 set whichwrap=b,<,>,[,],l,h " перемещать курсор на следующую строку при нажатии на клавиши вправо-влево и пр.
@@ -125,11 +129,13 @@ if has('gui')
 	if has('win32')
 		set guifont=Lucida_Console:h10:cRUSSIAN::
 	else
-		set guifont="Droid Sans Mono for Powerline":h11
+		set guifont=Hack
 	endif
 endif
 "" Автоматически перечитывать конфигурацию VIM после сохранения
 autocmd! bufwritepost $MYVIMRC source $MYVIMRC
+" Удаления висячих пробелов
+autocmd BufWritePre * %s/\s\+$//e
 hi StatusLine gui=reverse cterm=reverse
 let c_syntax_for_h="" 			" присваивался тип c, а не cpp.
 let g:pymode_rope_complete_on_dot = 0
@@ -146,7 +152,7 @@ let g:mta_filetypes = {
 " ------ vim-plug
 let g:plug_shallow = 1
 let g:plug_window = "topleft new"
-" ----- TagBar 
+" ----- TagBar
 let g:tagbar_left = 0
 let g:tagbar_autofocus = 1
 let g:tagbar_sort = 0 "tagbar shows tags in order of they created in file
@@ -156,9 +162,9 @@ let g:tagbar_compact = 1
 let g:tagbar_iconchars = ['▸', '▾']
 
 "-------------------- NerdTree --------------------
-let g:NERDTreeDirArrows = 1
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
+let g:NERDTreeDirArrows = 0
+"let g:NERDTreeDirArrowExpandable = '^'
+"let g:NERDTreeDirArrowCollapsible = '>'
 
 "-------------------- ultisnip --------------------
 let g:UltiSnipsExpandTrigger       = "<c-j>"
@@ -186,11 +192,11 @@ let g:airline_symbols.space = "\ua0"
 
 " ------------- vim-go --------
 let g:go_disable_autoinstall = 0
-let g:go_highlight_functions = 1  
-let g:go_highlight_methods = 1  
-let g:go_highlight_structs = 1  
-let g:go_highlight_operators = 1  
-let g:go_highlight_build_constraints = 1  
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck', 'varcheck']
 let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
@@ -249,6 +255,13 @@ else
 	imap <C-_> \c<space>
 	vmap <C-_> \c<space>
 endif
+
+"------------------- Folding
+inoremap <F9> <C-O>za
+nnoremap <F9> za
+onoremap <F9> <C-C>za
+vnoremap <F9> zf
+
 "-------------------- switch tab ------------------
 " Go to tab by number
 
